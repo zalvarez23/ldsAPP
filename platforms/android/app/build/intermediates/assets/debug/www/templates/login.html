@@ -1,0 +1,43 @@
+<ion-view view-title="" hide-nav-bar="true">
+    <!--<ion-content  style="background-color: #f2f6fd;">-->
+    <ion-content style="background: url(img/fondo4.png) no-repeat center;background-size:cover;">
+        <div id="paginaPrincipal">
+        
+                <br>
+                        
+                    <div class="list contentStyleLogin ">
+                     <img src="img/logo.png" width="60%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+                    <div></div>
+                    <br>
+                    <br>
+                    <div style="text-align: center">
+                        <a class="textStyle1">Ingresar usuario y contraseña para ingresar al sistema</a>
+                    </div>
+                    <br>
+                    <br>
+                     <label class="item item-input">
+                            <i class="icon ion-person placeholder-icon"></i>
+                            <input type="text" ng-model="params.nomusu" placeholder="Usuario">
+                        </label>
+                        <br>
+                        <label class="item item-input ">
+                            <i class="icon ion-locked placeholder-icon"></i>
+                            <input type="password" ng-model="params.passusu" placeholder="Contraseña">                            
+                        </label>
+                        
+                        <br>
+                        <div  style="text-align:center;" ng-if="showLoaderLogIn">
+                            <ion-spinner icon="android" class="loadingok"></ion-spinner>
+                        </div>
+                        <br>
+                        <button ng-show="showButtonLog" class="button button-block " ng-click="logIn()"><p class="titleC">Iniciar Sesión</p></button>
+                                            <div style="text-align: center">
+                        <a >v. 0.82</a>
+                    </div>
+                    </div>
+
+              
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,14 @@
+{
+  "name": "appLecturasLds_Real1",
+  "integrations": {
+    "cordova": {},
+    "gulp": {}
+  },
+  "type": "ionic1",
+  "watchPatterns": [
+    "scss/**/*",
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
+}

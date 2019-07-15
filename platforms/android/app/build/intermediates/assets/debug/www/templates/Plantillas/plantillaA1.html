@@ -1,0 +1,476 @@
+<ion-view title="Plantilla A" ng-init="getEjecutada();newPlantilla();">
+    <ion-nav-buttons side="right" >
+        <md-button class="md-icon-button ion-nav-button-right headBtnHome" ng-click="goHome()"
+                   aria-label="Setting">
+            <i class="ion-home" style=""></i>
+        </md-button>
+    </ion-nav-buttons> 
+    <ion-content padding="true" class="has-header" style="">
+    <div ng-show="showLoaderPlanA1" class="center">
+      <div  class="preloader-wrapper big active" >
+         <div class="spinner-layer spinner-blue-only">
+           <div class="circle-clipper left">
+             <div class="circle"></div>
+           </div>
+        </div>
+      </div>
+    </div>
+      <div class="list card cardKevin borderLeft2" ng-if="showListMovilOt" style="margin-bottom: 10px;margin-top: -1px;">
+         <div class="item itemCard">           
+           <h2>OT : {{listDetail.numero_ordenTrabajo}}</h2>           
+           <p>{{listDetail.direccion_OT}}</p>
+           <p>{{listDetail.trabajoDescripcion_OT}}</p>
+           <span class="badge">{{listDetail.orden_OT}}</span>
+         </div>
+      </div>
+
+      <ion-tabs ng-show="showListMovilOt" class="tabs-striped tabs-top tabs-color-assertive radioBorderK">
+
+        <ion-tab title="Generales" icon-on="ion-ios-filing" icon-off="ion-ios-filing-outline">
+          <div id="Generales" ng-class="classDisabledP1" class="padding20" style="margin-top:180px;height: 580px;">
+
+                <fieldset >
+                  <legend>Datos Generales</legend>
+                  
+                    <div class="row marginTop25" >
+                      <div class="input-field col s6">
+                         <input id="suministro" ng-model="paramsTab1.suministro_OTC" type="number" placeholder="Suministro">
+                      </div>
+                      <div class="input-field col s6">
+                         <input id="subestado" ng-model="paramsTab1.subEstacion_OTC" type="text" placeholder="Subestación">               
+                      </div>
+                    </div>
+                    <div class="row marginTop45">
+                      <div class="input-field col col-60">
+                         <input id="nombre" ng-model="paramsTab1.nomreCliente_OTC" type="text" placeholder="Ape. Nom. Cliente">
+                      </div>
+                      <div class="input-field col col-30">
+                         <input id="subestado" ng-model="paramsTab1.dniCliente_OTC" type="number" placeholder="DNI">               
+                      </div>
+                    </div>   
+                    <div class="row marginTop45">
+                      <div class="input-field col">
+                         <input id="nombre" type="text" ng-model="paramsTab1.obs_OTC" placeholder="Obs. de Trabajos">
+                      </div>
+                    </div>   
+                    <div class="row marginTop45" >
+                      <div class="card-panel grey lighten-5 z-depth-1 borderLeft2" style="width: 100%;">
+                        <div class="row valign-wrapper contentPlantilla borderleft" ng-click="modalSelect(5);">
+                         
+                            <div class="col col-90 "  >
+                              <input type="text" ng-model="nomEjecutada" placeholder="Ejecutara . . " disabled style="width: 90%;color:#868383;">
+                            </div>
+                            <div class="col" style="margin-left: -15px;">
+                              <a class="button button-icon icon ion-ios-search-strong"></a>
+                            </div>
+                         </div>
+                      </div>                 
+                    </div>     
+                    <div class="row marginTop45">
+                      <div class="card-panel grey lighten-5 z-depth-1 borderLeft2" style="width: 100%;">
+                        <div class="row valign-wrapper contentPlantilla" ng-click="modalSelect(6);">                    
+                            <div class="col col-90" >
+                              <input type="text" ng-model="nomPor" placeholder="Por . . " disabled style="width: 90%;color:#868383;">
+                            </div>
+                            <div class="col" style="margin-left: -15px;" >
+                              <a class="button button-icon icon ion-ios-search-strong"></a>
+                            </div>
+                         </div>
+                      </div>                 
+                    </div>  
+                    <div class="row marginTop45">
+                      <div class="input-field col col-60">
+                         <input id="hora" disabled="true" type="number" placeholder="Hora" ng-model="paramsTab1.hora_OTC">
+                      </div>
+                      <div class="input-field col col-30">
+                         <input id="minuto"  disabled="true" type="number" ng-model="paramsTab1.minuto_OTC"  placeholder="hora">               
+                      </div>
+                    </div>   
+                     <div class="row marginTop45">
+                      <div class="input-field col">
+                         <input id="nombre" type="text"  ng-model="paramsTab1.nro_Inspeccion_OTC"  placeholder="Nro. Inspección">
+                      </div>
+                    </div> 
+                    <div ng-show="showLoaderSave" class="center marginTop25 marginBot35">
+                      <div  class="preloader-wrapper big active" >
+                         <div class="spinner-layer spinner-blue-only">
+                           <div class="circle-clipper left">
+                             <div class="circle"></div>
+                           </div>
+                        </div>
+                      </div>
+                    </div>                
+                    <div class="marginTop25">
+                      <button class="button button-block buttonKevin" ng-click="savePlantilla1()">Guardar Información</button>   
+                    </div> 
+
+                </fieldset>
+          </div>
+        </ion-tab>
+
+        <ion-tab title="Medidor"  disabled="showTab2" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline">
+           <div id="Medidor" ng-class="classDisabledP2 " class="padding20 contentField" class="col s12"  style="margin-top:180px;height: 800px;">              
+                <h1 class="titleB">Datos del medidor retirado</h1>
+                  <div class="item item-input">             
+                      <input id="numero" type="number" ng-model="paramsTab2.nro_MedidorRet_OTC" placeholder="Numero">        
+                  </div>                     
+                    <div class="row " >
+                      <div class="card-panel grey lighten-5 z-depth-1 borderLeft2" style="width: 100%;">
+                        <div class="row valign-wrapper contentPlantilla " ng-click="modalSelect(3,1);">                         
+                            <div class="col col-90 ">
+                              <input type="text" ng-model="nomMarcaRet" placeholder="Seleccionar marca. . " disabled style="width: 90%;color:#868383;">
+                            </div>
+                            <div class="col" style="margin-left: -15px;" >
+                              <a class="button button-icon icon ion-ios-search-strong"></a>
+                            </div>
+                         </div>
+                      </div>                 
+                    </div>     
+                    <div class="row marginTop45">
+                      <div class="card-panel grey lighten-5 z-depth-1 borderLeft2" style="width: 100%;">
+                        <div class="row valign-wrapper contentPlantilla"  ng-click="modalSelect(4,1);">                    
+                            <div class="col col-90" >
+                              <input type="text" ng-model="nomModRet" placeholder="Seleccionar modelo. . " disabled style="width: 90%;color:#868383;">
+                            </div>
+                            <div class="col" style="margin-left: -15px;">
+                              <a class="button button-icon icon ion-ios-search-strong"></a>
+                            </div>
+                         </div>
+                      </div>                 
+                    </div>
+                 <div class="item item-input marginTop35">
+                      <input id="fase" type="text" ng-model="paramsTab2.fase_MedidorRet_OTC" placeholder="Fase">
+                       <i class="icon"></i>
+                      <input  type="text" ng-model="paramsTab2.estado_MedidorRet_OTC" placeholder="Estado">
+                  </div>             
+              
+              <h1 class="titleB">Datos del medidor instalado</h1>
+            <div class="item item-input">             
+                <input id="numero" type="number" ng-model="paramsTab2.nro_MedidorIns_OTC" placeholder="Numero">
+                <a class="item item-icon-left positive buttonSt buttonSearch" ng-click="searchMedidorByNumber();">
+                  <i class="icon ion-android-arrow-forward sizeIcon25"></i>
+                  </a>                        
+                <a class="item item-icon-left positive buttonSt buttonSearch" ng-click="searchMedidorPop();">
+                  <i class="icon ion-android-search sizeIcon25"></i>
+                  </a>          
+            </div> 
+                    <div class="row " >
+                      <div class="card-panel grey lighten-5 z-depth-1 borderLeft2" style="width: 100%;">
+                        <div class="row valign-wrapper contentPlantilla " >                         
+                            <div class="col col-100 ">
+                              <input type="text" ng-model="nomMarcaIns" placeholder="Marca. . " disabled style="width: 90%;color:#868383;">
+                            </div>
+                         </div>
+                      </div>                 
+                    </div>     
+                    <div class="row marginTop45">
+                      <div class="card-panel grey lighten-5 z-depth-1 borderLeft2" style="width: 100%;">
+                        <div class="row valign-wrapper contentPlantilla" >                    
+                            <div class="col col-100" >
+                              <input type="text" ng-model="nomModIns"  placeholder="Modelo. . " disabled style="width: 90%;color:#868383;">
+                            </div>
+                         </div>
+                      </div>                 
+                    </div>
+
+                 <div class="item item-input marginTop35">
+                      <input type="text" ng-model="paramsTab2.fase_MedidorIns_OTC" placeholder="Fase">
+                       <i class="icon"></i>
+                      <input  type="number" ng-model="paramsTab2.estado_MedidorIns_OTC" placeholder="Estado">        
+                  </div>           
+               <div ng-show="showLoaderSave2" class="center marginTop20 marginBot25">
+                      <div  class="preloader-wrapper big active" >
+                         <div class="spinner-layer spinner-blue-only">
+                           <div class="circle-clipper left">
+                             <div class="circle"></div>
+                           </div>
+                        </div>
+                      </div>
+               </div>             
+              <div class="marginTop20">
+                  <button class="button button-block buttonKevin" ng-click="savePlantilla2()">Guardar Información</button>   
+              </div> 
+           </div>
+        </ion-tab>
+
+        <ion-tab title="Datos" disabled="showTab3"  icon-on="ion-ios-gear" icon-off="ion-ios-gear-outline">
+          <div id="Datos" class="col s12 {{classDisabledP3}} padding20"  style="margin-top:180px;height: 600px;">
+              <div class="">
+                <fieldset>
+                  <legend>
+                    Datos Adicionales
+                  </legend>         
+                    <div class="row marginTop25">
+                      <div class="input-field col">
+                         <input id="sello1" type="number" ng-model="paramsTab3.selloBor1_OTC" placeholder="Sello Bornera 1">
+                      </div>
+                      <div class="input-field col">
+                         <input id="nombre" type="number" ng-model="paramsTab3.selloBor2_OTC" placeholder="Sello Bornera 2">
+                      </div>                      
+                    </div> 
+                    <div class="row marginTop45">
+                      <div class="input-field col">
+                         <input id="nombre" type="number" ng-model="paramsTab3.aledanio1_OTC" placeholder="Aleñado 1">
+                      </div>
+                      <div class="input-field col">
+                         <input id="nombre" type="number" ng-model="paramsTab3.aledanio2_OTC" placeholder="Aleñado 2">
+                      </div>                      
+                    </div> 
+                    <div class="row marginTop45">
+                      <div class="input-field col">
+                         <input id="nombre" type="number" ng-model="paramsTab3.notificacion_OTC" placeholder="Nro. de notificación">
+                      </div>
+                    </div>
+                    <div ng-show="showPlantilla2">
+                        <div class="row marginTop45" >
+                          <div class="card-panel grey lighten-5 z-depth-1 borderLeft2" style="width: 100%;">
+                            <div class="row valign-wrapper contentPlantilla " ng-click="modalSelect(9);">                         
+                                <div class="col col-90 ">
+                                  <input type="text" ng-model="paramsTab3.ejecutivo" placeholder="Seleccionar ejecutivo. . " disabled style="width: 90%;color:#868383;">
+                                </div>
+                                <div class="col" style="margin-left: -15px;" >
+                                  <a class="button button-icon icon ion-ios-search-strong"></a>
+                                </div>
+                             </div>
+                          </div>                 
+                        </div>
+                        <div class="row marginTop45">
+                          <div class="input-field col">
+                             <input type="text" ng-model="paramsTab3.chip"  placeholder="Chip">
+                          </div>
+                          <div class="input-field col">
+                             <input ng-model="paramsTab3.variomod" type="text"  placeholder="Variomod">
+                          </div>                      
+                        </div>
+                        <div class="row marginTop45">
+                          <div class="input-field col">
+                             <input ng-model="paramsTab3.factor" type="text" placeholder="Factor">
+                          </div>
+                          <div class="input-field col">
+                             <input ng-model="paramsTab3.potencia" type="text"  placeholder="Potencia">
+                          </div>                      
+                        </div>   
+                        <div class="row marginTop45">
+                          <div class="input-field col">
+                             <input ng-model="paramsTab3.anio" type="text" placeholder="Año">
+                          </div>
+                          <div class="input-field col">
+                            
+                          </div>                      
+                        </div>   
+                    </div>                    
+                    <div ng-show="showPlantilla3">
+                        <div class="row marginTop45" >
+                          <div class="card-panel grey lighten-5 z-depth-1 borderLeft2" style="width: 100%;">
+                            <div class="row valign-wrapper contentPlantilla " ng-click="modalSelect(7);">                         
+                                <div class="col col-90 ">
+                                  <input type="text" ng-model="paramsTab3.trabajo_solicitado" placeholder="Seleccionar Trabajo Solicitado. . " disabled style="width: 90%;color:#868383;">
+                                </div>
+                                <div class="col" style="margin-left: -15px;" >
+                                  <a href=""> <i class="small material-icons">play_arrow</i></a> 
+                                </div>
+                             </div>
+                          </div>                 
+                        </div>
+                        <div class="row marginTop45" >
+                          <div class="card-panel grey lighten-5 z-depth-1 borderLeft2" style="width: 100%;">
+                            <div class="row valign-wrapper contentPlantilla " ng-click="modalSelect(8);">                         
+                                <div class="col col-90 ">
+                                  <input type="text" ng-model="paramsTab3.trabajo_reportado" placeholder="Seleccionar Trabajo Reportado. . " disabled style="width: 90%;color:#868383;">
+                                </div>
+                                <div class="col" style="margin-left: -15px;" >
+                                  <a href=""> <i class="small material-icons">play_arrow</i></a> 
+                                </div>
+                             </div>
+                          </div>
+                        </div>
+                    </div>
+                                                                  
+                    <div ng-show="showLoaderSave3" class="center marginTop25 marginBot35">
+                      <div  class="preloader-wrapper big active" >
+                         <div class="spinner-layer spinner-blue-only">
+                           <div class="circle-clipper left">
+                             <div class="circle"></div>
+                           </div>
+                        </div>
+                      </div>
+                    </div>  
+                    <div class="marginTop25">
+                      <button class="button button-block buttonKevin" ng-click="savePlantilla3()">Guardar Información</button>   
+                    </div> 
+                </fieldset>                 
+              </div> 
+          </div>            
+        </ion-tab>
+
+        <ion-tab title="Baremos" disabled="showTab4"  icon-on="ion-ios-paper" icon-off="ion-ios-paper-outline">
+      
+          <div id="Baremos" class="col s12 padding20 contentField"  style="margin-top:190px;height: 400px;">
+            <div class="borderLeft2">
+               <div class="item item-input">   
+
+                  <input type="text" id="txtCodBaremos" ng-model="paramsFilter.cod_baremos" placeholder="Baremo . . ">
+                  <a class="item item-icon-left positive buttonSt buttonSearch" ng-click="searchBaremos()">
+                  <i class="icon ion-android-arrow-forward sizeIcon25"></i>
+                  </a>                  
+                  <a class="item item-icon-left positive buttonSt buttonSearch" ng-click="openModal(1);">
+                    <i class="icon ion-android-search sizeIcon25"></i>
+                    </a>
+                    <input type="text" step="0.01" id="txtCantBaremos" ng-model="paramsFilter.cant_baremos" placeholder="#">               
+                      
+              </div>
+             <div class="item item-input {{blockDet}}">
+                 <input class="col" type="text" disabled ng-model="paramsFilter.des_baremos" placeholder="Descripción . . " style="color:#868383;" >
+                    <a class="item item-icon-left positive buttonSt buttonCliente" ng-show="!showLoadMovilDet" ng-click="saveMovilOtDet(1,1);">
+                    <i class="icon ion-plus sizeIcon25"></i>
+                    </a>   
+              </div>                            
+          </div>
+          <div ng-show="showLoadMovilDet" class="center">
+              <div  class="preloader-wrapper small active" >
+                  <div class="spinner-layer spinner-blue-only">
+                     <div class="circle-clipper left">
+                     <div class="circle"></div>
+                     </div>
+                  </div>
+              </div>
+          </div>
+          <div class="contentMat">
+            <div ng-repeat="item in listMovilOtDet | filter : {tipoMaterial : 1}" class="list card cardKevin ">
+                  <div class="item item-icon-right " ng-click="showOptions(item)">                 
+                    <h2>Baremo : {{item.codigo}}</h2>
+                    <p>Descripción : {{item.des_material}}</p>                   
+                    <p>Cantidad : {{item.cantidad}}</p>                          
+                  </div>
+            </div>
+          </div>
+
+
+          </div>
+        </ion-tab>
+
+        <ion-tab title="Materiales"  disabled="showTab5" icon-on="ion-bag" icon-off="ion-bag">
+
+            <div id="Materiales" class="col s12 padding20 contentField" style="margin-top:190px;height: 400px;">
+            <div class="borderLeft2">
+               <div class="item item-input">   
+
+                  <input type="text" id="txtCodMaterial" ng-model="paramsFilter.cod_material" placeholder="Materiales . . ">
+                  <a class="item item-icon-left positive buttonSt buttonSearch" ng-click="searchMateriales()">
+                  <i class="icon ion-android-arrow-forward sizeIcon25"></i>
+                  </a>                  
+                  <a class="item item-icon-left positive buttonSt buttonSearch" ng-click="openModal(2);">
+                    <i class="icon ion-android-search sizeIcon25"></i>
+                    </a>
+                    <input type="text"  id="txtCantMaterial" ng-model="paramsFilter.cant_material" placeholder="#">               
+                      
+              </div>
+             <div class="item item-input {{blockDet}}">
+                 <input class="col" type="text" disabled ng-model="paramsFilter.des_material" placeholder="Descripción . . " style="color:#868383;" >
+                    <a class="item item-icon-left positive buttonSt buttonCliente" ng-show="!showLoadMovilDet" ng-click="saveMovilOtDet(2,2);">
+                    <i class="icon ion-plus sizeIcon25"></i>
+                    </a>   
+              </div>                            
+          </div>
+          <div ng-show="showLoadMovilDet" class="center">
+              <div  class="preloader-wrapper small active" >
+                  <div class="spinner-layer spinner-blue-only">
+                     <div class="circle-clipper left">
+                     <div class="circle"></div>
+                     </div>
+                  </div>
+              </div>
+          </div>
+          <div class="contentMat">
+            <div ng-repeat="item in listMovilOtDet | filter : {tipoMaterial : 2}" class="list card cardKevin ">
+                  <div class="item item-icon-right " ng-click="showOptions(item)">                 
+                    <h2>Baremo : {{item.codigo}}</h2>
+                    <p>Descripción : {{item.des_material}}</p>                   
+                    <p>Cantidad : {{item.cantidad}}</p>                          
+                  </div>
+            </div>
+          </div>
+        </div>
+
+        </ion-tab>
+        <ion-tab title="Fotos" disabled="showTab6"  icon-on="ion-images" icon-off="ion-images">
+            <div id="Fotos" class="col s12 padding20" style="margin-top:180px;height: 550px;">
+             <div class="col col-90" >
+                <input type="text"  ng-model="paramsFoto.coment" placeholder="Observación . . " style="width: 110%;color:#868383;"> 
+             </div> 
+             <div class="row">
+               <div class="col col-50">
+               <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="takePhoto(1);">TOMAR FOTO
+                  <i class="material-icons right">send</i>
+               </button>               
+             </div>
+             <div class="col col-50">
+              <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="takePhoto(2);">GALLERIA
+                  <i class="material-icons right">send</i>
+               </button>               
+             </div>             
+             </div>
+
+          
+              <div ng-show="showLoaderFoto" class="center" style="padding-top: 20px;">
+                <div  class="preloader-wrapper big active" >
+                   <div class="spinner-layer spinner-blue-only">
+                     <div class="circle-clipper left">
+                       <div class="circle"></div>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <br><br>
+              <div class="list listKevin">
+                <a class="item item-avatar item-icon-right" ng-repeat = "item in listFotos" >
+                  <img ng-src="{{item.url_FotoDet}}" ng-click="showImages($index)">
+                  <h2>Foto # {{$index + 1}}</h2>
+                  <p>{{item.nombre_FotoDet}}</p>    
+                  <p>Observación : {{item.obs_FotoDet}}</p>           
+                  <i class="icon ion-trash-b" ng-click="deletePhoto(item)"></i>
+                  
+                </a>
+              </div>              
+            </div>
+        </ion-tab>        
+      </ion-tabs>
+      
+      </ion-content>
+  <script id="my-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar-dsige"  ng-click="closeModal()">
+       <i class="ion-ios-arrow-left" style="font-size: 30px;margin-left: 10px;"></i>       
+      <h1 class="title">Busqueda de {{titleModal}}</h1>
+    </ion-header-bar>
+    <ion-content>
+    <br>      
+        <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper" style="background-color: white;">
+              <i class="icon ion-ios-search placeholder-icon"></i>
+              <input type="search" id="txtSearch" ng-model="parametersSearch.des" placeholder="Busqueda . .">
+            </label>
+            
+            <button class="button button-positive" style="font-size:12px;" ng-click="listDetalleOt(0,2)">
+              Buscar 
+            </button>
+          </div>
+        <div id="loadTabs" ng-show="showLoaderModal" style="text-align:center;padding-top: 20px; ">
+                     <ion-spinner icon="android" class="loadingok"></ion-spinner>
+         </div>
+        <div class="list modalClass" ng-show="showListModal">
+          <div class="item item-button-right" ng-repeat="item in listDetalleModal">
+            <p>Codigo : {{item.cod}}</p>
+            <p>Descripción : {{item.des}}</p>
+            <button class="button button-positive" ng-click="getDataBarMat(item)">
+              <i class="icon ion-checkmark-round {{item.flagM}}"></i>
+            </button>
+          </div>
+        </div>
+      <ion-infinite-scroll on-infinite="moreListDetalleOt()" ng-if="hasMoreData" distance="0%">
+    </ion-infinite-scroll>        
+         <md-divider  ng-show="showListModal" ></md-divider>      
+    </ion-content>
+  </ion-modal-view>
+</script>
+</ion-view>

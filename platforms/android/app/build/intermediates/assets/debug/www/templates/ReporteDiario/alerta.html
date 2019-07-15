@@ -1,0 +1,36 @@
+<ion-view title="Reporte Diario" ng-init="initView()">
+    <ion-nav-buttons side="right" >
+        <md-button class="md-icon-button ion-nav-button-right headBtnHome" ng-click="goHome()"
+                   aria-label="Setting">
+            <i class="ion-home" style=""></i>
+        </md-button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header">
+    <div style="text-align:center; " ng-if="showLoader">
+       <ion-spinner icon="android" class="loadingok"></ion-spinner>
+    </div>
+    <div id="contentAllBody" ng-if="!showLoader">
+      <a class="item item-icon-right positive buttonStForm borderBot" ng-click="modalSelectGrupo(2);">
+        <i class="icon ion-android-search"></i>
+        Tipo de Alerta : <b class="textCombo">{{nomSelect}}</b>
+      </a>
+      <div class="list listKevin">
+        <a class="item item-avatar item-icon-right" ng-repeat = "item in listFotos" >
+        <img ng-src="{{item.SrcUri}}" ng-click="showImages($index)">
+        <h2>Foto # {{$index + 1}}</h2>
+        <p>{{item.fotourl}}</p>
+        <i class="icon ion-android-delete" style="font-size: 26px;" ng-click="deleteFoto(item)"></i>           
+        </a>
+      </div>      
+      <div class="row rowButtonSt ">
+        <div class="col {{blockCab}}" >
+          <a class="item item-icon-left positive buttonSt" ng-click="sendAlert();">
+            <i class="icon ion-ios-download"></i>
+             Enviar
+          </a>   
+        </div>   
+      </div>      
+    </div>
+
+    </ion-content>
+</ion-view>

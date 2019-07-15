@@ -1,0 +1,38 @@
+<ion-view title="Cuadrilla">
+    <ion-nav-buttons side="right" >
+        <md-button class="md-icon-button ion-nav-button-right headBtnHome" ng-click="goHome()"
+                   aria-label="Setting">
+            <i class="ion-home" style=""></i>
+        </md-button>
+    </ion-nav-buttons>
+    <ion-content>
+      <div class="HeaderContent" style="    height: 40px !important;">        
+        <p>Seleccionar una cuadrilla</p>
+      </div>
+    </ion-content>
+
+    <ion-content padding="true" class="has-header marginKevinP">
+    <div ng-show="showLoaderCua" class="center">
+      <div  class="preloader-wrapper big active" >
+         <div class="spinner-layer spinner-blue-only">
+           <div class="circle-clipper left">
+             <div class="circle"></div>
+           </div>
+        </div>
+      </div>
+    </div>
+    <div ng-show="showListCuadrillas">
+      <div class="card-panel grey lighten-5 z-depth-1 borderLeft" ng-repeat="item in listCuadrillas">
+          <div class="row valign-wrapper contentPlantilla" ng-click="changeView('menu.home-actividades',item)">
+            <div class="col s4 m2" style=" margin-left: -10px;margin-right: -65%;">
+                <a class="button button-icon icon ion-ios-information"></a> 
+            </div>
+            <div class="col s8 m10">
+               <span class="black-text">{{item.nombre_cuadrilla}} - {{item.nombres_personal}} {{item.apellidos_personal}}</span>
+            </div>
+          </div>
+       </div>
+    </div>
+
+    </ion-content>
+</ion-view>

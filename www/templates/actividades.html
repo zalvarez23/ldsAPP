@@ -1,0 +1,42 @@
+<ion-view title="Actividades" ng-init="getTbl_movil_ot();getServicios();">
+    <ion-nav-buttons side="right" >
+        <md-button class="md-icon-button ion-nav-button-right headBtnHome" ng-click="goHome()"
+                   aria-label="Setting">
+            <i class="ion-home" style=""></i>
+        </md-button>
+    </ion-nav-buttons> 
+    <ion-content padding="true" class="has-header">
+
+    <div ng-show="showLoaderActi" class="center">
+      <div  class="preloader-wrapper big active" >
+         <div class="spinner-layer spinner-blue-only">
+           <div class="circle-clipper left">
+             <div class="circle"></div>
+           </div>
+        </div>
+      </div>
+    </div>
+    <ion-refresher  on-refresh="getTbl_movil_ot();">
+    </ion-refresher>
+    <div ng-show="showListMovilOt" >
+      <a class='dropdown-button btn styleDropdown' ng-click="modalServicios();">Servicio : {{nomServicio}}</a>
+      <div class="bar bar-header item-input-inset" style="border: none;top: 10px;    padding-top: 20px;">
+          <label class="item-input-wrapper" style="background-color: transparent;">
+          <i class="icon ion-ios-search placeholder-icon"></i>
+          <input type="search" ng-model="search" placeholder="Busqueda . ."></label>
+     </div>
+      <div ng-repeat="item in listMovilOt | filter : search" class="list card cardKevin {{getBorderEstatus(item.Estado_OT)}}" >
+        <div class="item item-icon-right " ng-click="changeView(item)">
+         <i class="icon ion-ios-arrow-right"></i>          
+          <h2>OT : {{item.numero_ordenTrabajo}}</h2>
+          <h3>{{nomServicio}}</h3>          
+          <p>{{item.direccion_OT}}</p>
+          <p>{{item.trabajoDescripcion_OT}}</p>          
+          <span class="badge">{{item.orden_OT}}</span>
+        </div>
+      </div>
+  </div>
+  <ion-infinite-scroll on-infinite="getMoreTbl_movil_ot()" ng-if="hasMoreData" distance="0%">
+  </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,31 @@
+<ion-view title="Maps" ng-init="initView();">
+    <button class="button button-floatk" ng-click="initView(false);">
+        <i class="icon ion-ios-location"></i>
+      </button> 
+    <button class="button button-floatt" ng-click="initView(true);">
+        <i class="icon ion-map"></i>
+      </button>       
+    <ion-nav-buttons side="right" >
+        <md-button class="md-icon-button ion-nav-button-right headBtnHome" ng-click="goHome()"
+                   aria-label="Setting">
+            <i class="ion-home" style=""></i>
+        </md-button>
+    </ion-nav-buttons> 
+    <ion-content>
+      <div class="HeaderContent" style="    height: 40px !important;">        
+        <p>Ubicación de Suministros {{title}}</p>
+      </div>
+    </ion-content>
+
+  <ion-content padding="true" class="has-header marginKevinP">
+    <div ng-show="showLoaderPlan" style="text-align:center; ">
+       <ion-spinner icon="android" class="loadingok"></ion-spinner>
+    </div>   
+    <div id="map" ng-show="!showLoaderPlan">
+      
+    </div>
+  
+    </ion-content>
+  </ion-modal-view>
+</script>  
+</ion-view>

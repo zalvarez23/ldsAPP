@@ -1,0 +1,60 @@
+<ion-view title="Reporte Diario" >
+    <ion-nav-buttons side="right" >
+        <md-button class="md-icon-button ion-nav-button-right headBtnHome" ng-click="goHome()"
+                   aria-label="Setting">
+            <i class="ion-home" style=""></i>
+        </md-button>
+    </ion-nav-buttons> 
+    <ion-content>
+      <div class="HeaderContent" style="    height: 40px !important;">        
+        <p>Ingresar o Cambiar filtros</p>
+      </div>
+    <div  style="text-align:center; " ng-if="loaderOk">
+      <br>
+       <ion-spinner icon="android" class="loadingok"></ion-spinner>
+       <br>
+       <br>
+    </div> 
+      <div class="cotentFilter">
+        <div class="list">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Sucursal
+
+            </div>
+            <select id="selectSucursal">
+              <option ng-repeat="item in listSucursales" ng-value="item.codigo" >{{item.nombre}}</option>             
+            </select>
+          </label>
+         
+        <label class="item item-input">
+          <input type="date" id="txtFecha">
+        </label>  
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Sector
+            </div>
+            <select ng-model="paramsSearch.sector">
+              <option ng-repeat="item in listSector">{{item.sector}}</option>             
+              
+            </select>
+          </label>          
+          <button class="item button-full  icon-left ion-search button-positive" ng-click="getReporteDiarioReal();">Buscar</button>
+        </div> 
+        <!-- TABLE --> 
+
+        <div class="row header">
+          <div class="col">Operario</div>
+          <div class="col">Asignado</div>
+          <div class="col">Pendiente</div>          
+          <div class="col">Ejecutado</div>          
+        </div>
+        <div class="row" ng-repeat="data in listData">
+          <div class="col">{{data.operario}}</div>
+          <div class="col">{{data.asignado}}</div>
+          <div class="col">{{data.pendiente}}</div>  
+          <div class="col">{{data.ejecutado}}</div>
+        </div>
+      </div>    
+    </ion-content>    
+</ion-view>

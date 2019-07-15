@@ -1,0 +1,72 @@
+<ion-view title="Resultado del día" ng-init="">
+    <ion-nav-buttons side="right" >
+        <md-button class="md-icon-button ion-nav-button-right headBtnHome" ng-click="goHome()"
+                   aria-label="Setting">
+            <i class="ion-home" style=""></i>
+        </md-button>
+    </ion-nav-buttons> 
+
+
+  <ion-content padding="true" class="has-header ">
+      <a class="float" ng-click="getListAvance();">
+        <i class="ion-refresh"></i>
+      </a>      
+      <fieldset class="contentField {{disabledContent}}">
+        <legend>Filtro de Busqueda</legend>     
+            <div class="row" style="    margin-top: -5px;">
+              <div class="col">
+                 <a class="item item-icon-right positive buttonStForm borderBot " ng-click="getModalSelect(1);">
+                   <i class="icon ion-android-search  sizeIcon20"></i>
+                    Servicio <b style="color:#737272">{{paramsFilter.nom_Servicio}}</b>
+                 </a>
+              </div>
+              <div class="col">
+                <label class="item item-input " style="margin-top:5px;">
+                  <i class="icon ion-ios-calendar-outline placeholder-icon"></i>
+                  <input type="date" placeholder="Codigo" id="txtFechaAsig" >
+                </label>
+              </div>
+            </div> 
+
+            <div class="row" style="margin-bottom: -10px;     border-top: 1px solid #9e9e9e36;">
+              <div class="col">
+                 <a class="item item-icon-right positive buttonStForm borderBot " ng-click="getModalSelect(2);">
+                   <i class="icon ion-android-search  sizeIcon20"></i>
+                    Sector <b style="color:#737272">{{paramsFilter.nom_Sector}}</b>
+                 </a>
+              </div>
+              <div class="col">
+                 <a class="item item-icon-right positive buttonStForm borderBot " ng-click="getModalSelect(3);">
+                   <i class="icon ion-android-search  sizeIcon20"></i>
+                    Sucursal <b style="color:#737272">{{paramsFilter.nom_Sucursal}}</b>
+                 </a>
+              </div>
+            </div>             
+        </div>            
+      </fieldset>
+    <div ng-show="showLoader" style="text-align:center;margin:5px;">
+       <ion-spinner icon="android" class="loadingok"></ion-spinner>
+    </div>
+    <div  ng-if="listAvance.length == 0">
+      <p ng-if="showLoader" class="sinInfo">Cargando información . .</p>
+      <p ng-if="!showLoader" class="sinInfo">Sin información</p>
+    </div> 
+      <div class="tableStyle">
+        <div class="row header ">
+          <div class="col ">Cod</div>
+          <div class="col col-50">Nombre</div>
+          <div class="col ">Asig.</div>
+          <div class="col ">Ejec.</div>
+          <div class="col ">Pend.</div>
+        </div>
+        <div class="row"  ng-repeat=" item in listAvance">
+          <div class="col ">{{item.id_operario}}</div>
+          <div class="col col-50">{{item.operario}}</div>
+          <div class="col ">{{item.cant_asignado}}</div>
+          <div class="col ">{{item.cant_realizado}}</div>
+          <div class="col " style="color: #e34a4a; font-weight: 600;">{{item.cant_pendiente}}</div>
+        </div>
+      </div>
+  </ion-content>
+
+</ion-view>

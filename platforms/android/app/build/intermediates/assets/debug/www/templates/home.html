@@ -1,0 +1,112 @@
+<ion-view title="Inicio" id="page1">
+
+    <ion-content>
+      <div class="HeaderContent">
+        <h1>Bienvenido al sistema V. {{versionA}}</h1>
+        <p>{{nameUser}}</p>
+      </div>
+    </ion-content>
+    
+    <ion-content padding="true" class="has-header marginKevin">
+
+    <div  style="text-align:center;" ng-if="showLoaderMenu">
+      <ion-spinner icon="android" class="loadingok"></ion-spinner>
+    </div>   
+
+    <div ng-show="showContentMenu">
+
+
+      <div class="row " style="margin-bottom: -45px !important;">
+        <div class="col">
+          <div class="card newcardKevin"  ng-click="getConfirmMessage();">
+            <div class="item item-text-wrap">
+              <a class="button button-icon icon ion-ios-loop-strong"></a>   
+              <p>Sincronizar</p>
+            </div>      
+          </div>
+        </div>
+        <div class="col {{blockMenu}}">
+          <div class="card newcardKevin"  ng-click="changeView('menu.home-menuActividades');">
+            <div class="item item-text-wrap">
+              <a class="button button-icon icon ion-android-list"></a>
+              <p>Actividades</p>
+            </div>      
+          </div>
+        </div>      
+      </div>  
+      <div class="row" style="margin-bottom: -45px !important;">
+        <div class="col {{blockMenu}}">
+          <div class="card newcardKevin" ng-click="getConfirmMessageSend();">
+            <div class="item item-text-wrap">
+              <a class="button button-icon icon ion-paper-airplane"></a>                
+              <p>Enviar Lecturas</p>
+            </div>      
+          </div>
+        </div>
+        <div class="col {{blockMenu}}">
+          <div class="card newcardKevin" ng-click="getConfirmMessageSendFotos();">
+            <div class="item item-text-wrap">
+              <a class="button button-icon icon ion-images"></a>                
+              <p>Enviar Fotos</p>
+            </div>      
+          </div>
+        </div>        
+     
+      </div>
+      <div class="row" style="margin-bottom: -45px !important;">
+        <div class="col {{blockMenu}}">
+          <div class="card newcardKevin" ng-click="changeView('menu.sendInfo');">
+            <div class="item item-text-wrap">
+              <a class="button button-icon icon ion-loop"></a>
+              <p>Reenviar </p>
+            </div>      
+          </div>
+        </div> 
+        <div class="col {{blockMenu}}">
+          <div class="card newcardKevin" ng-click="changeView('menu.home-listaAvance');">
+            <div class="item item-text-wrap">
+              <a class="button button-icon icon ion-loop"></a>
+              <p>Resultado del día </p>
+            </div>      
+          </div>
+        </div> 
+        <div class="col {{blockMenu}}" ng-if="k">
+          <div class="card newcardKevin" ng-click="changeView('menu.home-reporteDiario');">
+            <div class="item item-text-wrap">
+              <a class="button button-icon icon ion-clipboard"></a>
+              <p>Reporte Diario</p>
+            </div>      
+          </div>
+        </div>         
+        <div class="col {{blockMenu}}" ng-if="k">
+          <div class="card newcardKevin"  ng-click="changeView('menu.home-alerta');">
+            <div class="item item-text-wrap">
+              <a class="button button-icon icon ion-android-alert colorRed"></a>   
+              <p class="colorRed">Alerta</p>
+            </div>      
+          </div>
+        </div>      
+      </div>   
+      <div class=row>
+           
+        <div class="col ">
+          <div class="card newcardKevin"  ng-click="closeSession();">
+            <div class="item item-text-wrap">
+              <a class="button button-icon icon ion-power colorRed"></a>
+              <p>Salir</p>
+            </div>      
+          </div>
+        </div> 
+      </div>
+    </div>
+  <!--  <div  ng-repeat="item in listActividades" class="list card cardKevin">
+	    <div class="item item-icon-right ">
+	    	<i class="icon ion-ios-arrow-right"></i> 
+	        <h2>Actividad {{item.co_acti}}</h2>
+	        <p>{{item.no_desc_loca}}</p>
+	        <p>{{item.no_dire_loca}}</p>
+	        <span class="badge">{{item.fe_acti_inic}}</span>
+	     </div>
+    </div> -->
+    </ion-content>
+</ion-view>

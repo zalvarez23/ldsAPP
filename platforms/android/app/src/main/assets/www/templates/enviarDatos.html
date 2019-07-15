@@ -1,0 +1,58 @@
+<ion-view title="Reenviar Información" id="page1">
+
+
+    <ion-content padding="true" class="has-header">
+    <div ng-show="showLoaderMenu" class="center">
+      <div  class="preloader-wrapper big active" >
+         <div class="spinner-layer spinner-blue-only">
+           <div class="circle-clipper left">
+             <div class="circle"></div>
+           </div>
+        </div>
+      </div>
+    </div>
+    <div ng-show="showContentMenu">
+
+      
+      <div class="row" style="margin-bottom: -45px !important;">
+        <div class="col">
+          <div class="card newcardKevin"  ng-click="getConfirmMessageSend();">
+            <div class="item item-text-wrap">
+              <a class="button button-icon icon ion-ios-loop-strong"></a>   
+              <p>Reenviar Lecturas</p>
+            </div>      
+          </div>
+        </div>     
+      </div>  
+      <div class="row" style="margin-bottom: -45px !important;">
+        <div class="col">
+          <div class="card newcardKevin" ng-click="getConfirmMessageSendFotos();">
+            <div class="item item-text-wrap">
+              <a class="button button-icon icon ion-paper-airplane"></a>                
+              <p>Reenviar Fotos</p>
+            </div>      
+          </div>
+        </div>  
+      </div>  
+    <div class="row" style="margin-bottom: -45px !important;" ng-if="showDeleteHistorial">
+        <div class="col">
+          <div class="card newcardKevin"  ng-click="LimpiarHistorial();">
+            <div class="item item-text-wrap">
+              <a class="button button-icon icon ion-trash-a"></a>   
+              <p>Limpiar Historial</p>
+            </div>      
+          </div>
+        </div>     
+      </div>       
+    </div>
+  <!--  <div  ng-repeat="item in listActividades" class="list card cardKevin">
+	    <div class="item item-icon-right ">
+	    	<i class="icon ion-ios-arrow-right"></i> 
+	        <h2>Actividad {{item.co_acti}}</h2>
+	        <p>{{item.no_desc_loca}}</p>
+	        <p>{{item.no_dire_loca}}</p>
+	        <span class="badge">{{item.fe_acti_inic}}</span>
+	     </div>
+    </div> -->
+    </ion-content>
+</ion-view>
